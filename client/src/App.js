@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-      <h1>test2</h1>
+      <h1>test2sadsaasasdds</h1>
     </div>
   );
 }
