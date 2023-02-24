@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import BackButton from "../BackButton";
 import { Button } from "../Button/style";
 import Myimg from "./Myimg";
-
+import HomeButton from "../HomeButton";
 const BgImg = styled.div`
     ${(props) =>
         props.data &&
@@ -64,9 +64,10 @@ const Container = styled.div`
     flex-direction: column;
     background-color: #4a4a4a;
 
-    .buttonBox {
-        margin: 63px 0px 0px 40px;
-    }
+  .buttonBox {
+    margin:63px 0px 37px 40px;
+    display:flex;
+  }
 `;
 
 const Section = styled.div`
@@ -89,63 +90,64 @@ const Section = styled.div`
 // margin: 51px 0px 0px 14px;
 // `;
 export default function Uploadimg() {
-    const [complete, setCompelete] = useState(false);
-    const [isdelete, setIsDelete] = useState(false);
-    const [frameImg, setFrameImg] = useState("");
-    const [standard, setStandard] = useState("");
-    const isUploadimg = (iscomplete) => {
-        const temp = iscomplete === 0;
-        setCompelete(temp);
-    };
-    const handleClick = () => {
-        return isdelete;
-    };
-    const location = useLocation();
-    const madeframe = location.state.post;
-    const itemstandard = location.state.data;
-    useEffect(() => {
-        setStandard(itemstandard);
-        setFrameImg(madeframe);
+  const [complete, setCompelete] = useState(false);
+  const [isdelete, setIsDelete] = useState(false);
+  const [frameImg, setFrameImg] = useState("");
+  const [standard, setStandard] = useState("");
+  const isUploadimg = (iscomplete) => {
+    const temp = iscomplete === 0;
+    setCompelete(temp);
+  };
+  const handleClick = () => {
+    return isdelete;
+  };
+  const location = useLocation();
+  const madeframe = location.state.post;
+  const itemstandard = location.state.data;
+  useEffect(() => {
+    setStandard(itemstandard);
+    setFrameImg(madeframe);
+    
+    console.log(standard);
+  }, [frameImg]);
 
-        console.log(standard);
-    }, [frameImg]);
-
-    useEffect(() => {
-        setIsDelete(false);
-    }, [isdelete]);
-    console.log(frameImg);
-    console.log(isdelete);
-    return (
-        <Container>
-            <div className="buttonBox">
-                <Link to="/Editframe">
-                    <BackButton />
-                </Link>
-            </div>
-            <Section>
-                <p>사진을 4장 업로드해주세요!</p>
-            </Section>
-            <Section>
-                <BgImg data={frameImg} Standard={standard}>
-                    <Myimg isUpload={isUploadimg} isDelete={isdelete} />
-                </BgImg>
-            </Section>
-            <Section>
-                {complete && (
-                    <div>
-                        <Link to="/정보입력">
-                            <Button className="uploadBtn">확인</Button>
-                        </Link>
-                        <Button
-                            onClick={() => {
-                                setIsDelete(true);
-                            }}
-                        >
-                            사진 전체 삭제
-                        </Button>
-                    </div>
-                )}
-            </Section>
-        </Container>
-    );
+  useEffect(() => {
+    setIsDelete(false);
+  }, [isdelete]);
+  console.log(frameImg);
+  console.log(isdelete);
+  return (
+    <Container>
+      <div className="buttonBox">
+        <Link to="/Editframe">
+          <BackButton />
+        </Link>
+        <Link to="/">
+        <HomeButton/>
+        </Link>
+      </div>
+      <Section>
+        <p>컷을 클릭하여 사진을 4장 업로드해주세요!</p>
+      </Section>
+      <Section>
+          <Myimg isUpload={isUploadimg} isDelete={isdelete} data={frameImg} Standard={standard}/>
+      </Section>
+      <Section>
+        {complete && (
+          <div>
+            <Link to="/정보입력">
+              <Button className="uploadBtn">확인</Button>
+            </Link>
+            <Button
+              onClick={() => {
+                setIsDelete(true);
+              }}
+            >
+              사진 전체 삭제
+            </Button>
+          </div>
+        )}
+      </Section>
+    </Container>
+  );
 }
