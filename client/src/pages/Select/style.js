@@ -17,3 +17,7 @@ export const SubLogoImg = styled.img`
   margin: 1.5rem 0;
   height: 260px;
 `;
+
+export const UploadInp = styled.input`
+  display: none;
+`;
