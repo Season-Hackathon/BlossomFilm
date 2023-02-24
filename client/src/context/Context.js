@@ -14,3 +14,19 @@ export const CutStore = (props) => {
     </CutContext.Provider>
   );
 };
+
+export const FrameBgContext = createContext({
+  frameBg: null,
+  setFrameBg: () => {},
+});
+
+export const FrameBgStore = (props) => {
+  const [frameBg, setFrameBg] = useState("");
+
+  return (
+    <FrameBgContext.Provider value={{ frameBg, setFrameBg }}>
+      {props.children}
+    </FrameBgContext.Provider>
+  );
+};
+
