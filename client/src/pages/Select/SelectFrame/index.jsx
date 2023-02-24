@@ -1,16 +1,19 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Frame from "../../../assets/img-frame2.svg";
 import Button from "../../../components/Button";
+import { FrameBgContext } from "../../../context/Context";
 import * as S from "../style";
 
 export default function SelectFrame() {
   const navigate = useNavigate();
+  const { setFrameBg } = useContext(FrameBgContext)
   const imgRef = useRef();
 
   const handlePickImg = (e) => {
     const file = URL.createObjectURL(imgRef.current.files[0])
-    file && navigate('/frame', { state : file })
+    setFrameBg(file)
+    navigate('/frame')
   }
 
   return (
