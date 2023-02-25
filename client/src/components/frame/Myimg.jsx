@@ -222,7 +222,7 @@ export default function Myimg({isUpload, isDelete, data ,Standard}) {
         }}
       />
       <form method="post" enctype="multipart/form-data">
-        <BackgroundImg data={props.data} Standard={props.Standard}>
+        <BackgroundImg data={data} Standard={Standard}>
           <div className="imgbox">
             {!cropData.File1 && (
               <section>
