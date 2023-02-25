@@ -1,23 +1,34 @@
-import { useContext, useState } from "react"
-import Frame from "../../assets/frame-horizontal.svg"
-import Vframe1 from "../../assets/frame-vertical.svg"
-import Frame2 from "../../assets/frame2-horizontal.svg"
-import Vframe2 from "../../assets/frame2-vertical.svg"
-import Frame3 from "../../assets/frame3-horizontal.svg"
-import Vframe3 from "../../assets/frame3-vertical.svg"
-import Frame4 from "../../assets/frame4-horizontal.svg"
-import Vframe4 from "../../assets/frame4-vertical.svg"
+import { useContext } from "react"
+import Frame from "../../assets/Frame1_hor.png"
+import Vframe1 from "../../assets/Frame1_ver.png"
+import Frame2 from "../../assets/Frame2_hor.png"
+import Vframe2 from "../../assets/Frame2_ver.png"
+import Frame3 from "../../assets/Frame3_hor.png"
+import Vframe3 from "../../assets/Frame3_ver.png"
+import Frame4 from "../../assets/Frame4_hor.png"
+import Vframe4 from "../../assets/Frame4_ver.png"
 import LeftArrow from "../../assets/icon-leftArrow.svg"
 import RightArrow from "../../assets/icon-rightArrow.svg"
 import { CutContext } from "../../context/Context"
 import * as S from "./style"
 
-export default function DefaultFrame({ cutState }) {
-  const [frame, setFrame] = useState(0)
+// const baseURL = process.env.REACT_APP_PUBLIC_URL;  
+
+// const Frame = baseURL + '/assets/Frame1_hor.png',
+//   Vframe1 = baseURL + '/assets/Frame1_ver.png',
+//   Frame2 = baseURL + '/assets/Frame2_hor.png',
+//   Vframe2 = baseURL + '/assets/Frame2_ver.png',
+//   Frame3 = baseURL + '/assets/Frame3_hor.png',
+//   Vframe3 = baseURL + '/assets/Frame3_ver.png',
+//   Frame4 = baseURL + '/assets/Frame4_hor.png',
+//   Vframe4 = baseURL + '/assets/Frame4_ver.png';
+
+export default function DefaultFrame({ frame, setFrame }) {
+
   const { cutSelect } = useContext(CutContext);
 
   const FrameList =
-    cutSelect === "hor" ?
+    cutSelect === "Width" ?
       [Frame, Frame2, Frame3, Frame4]
       : [Vframe1, Vframe2, Vframe3, Vframe4]
 

@@ -5,11 +5,12 @@ import { CutStore, FrameBgStore } from "./context/Context";
 
 import Editframe from "./components/frame/Editframe";
 import Uploadimg from "./components/frame/Uploadimg";
+import SetTitle from "./pages/SetTitle/index";
+import Root from "./Router/Root";
 import Home from "./pages/Home";
 import SelectCut from "./pages/Select/SelectCut";
 import SelectFrame from "./pages/Select/SelectFrame";
 import SelectFrameType from "./pages/Select/SelectFrameType";
-import SetTitle from "./pages/SetTitle/index";
 
 const GlobalStyle = createGlobalStyle`
  *{
@@ -25,21 +26,34 @@ const GlobalStyle = createGlobalStyle`
   .hidden {height:100%; min-height:100%; overflow:hidden !important; touch-action:none;}
 `;
 
+// const router = createBrowserRouter([
+//     {
+//         path: "/",
+//         element: <Root />,
+//     },
+//     {
+//         path: "/Editframe",
+//         element: <Editframe />,
+//     },
+//     {
+//         path: "/Uploadimg",
+//         element: <Uploadimg />,
+//     },
+// ]);
+
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Home />,
     },
     {
-        path: "/:id",
-        element: <Uploadimg />,
-    },
-
-    {
         path: "/frame",
         element: <Editframe />,
     },
-
+    {
+        path: "/Uploadimg",
+        element: <Uploadimg />,
+    },
     {
         path: "/title",
         element: <SetTitle />,
